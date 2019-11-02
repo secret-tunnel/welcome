@@ -1,22 +1,262 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
+.bg {
   background-color: #282c34;
+  font-size: calc(10px + 1vmin);
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.blink {
+  background-color: white;
+  opacity: 0.0;
+  width: 5px;
+  height: 5px;
+  animation: blink-02 300ms infinite;
+  transform: rotate(45deg);
 }
+
+.blink-overlay {
+  opacity: 0.0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.lock {
+  border-radius: 3px;
+  padding: 5px;
+  position: absolute;
+  opacity: 1.0;
+}
+
+.lock-engaged {
+  opacity: 0.0;
+  pointer-events: none;
+}
+
+.token-wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.component {
+  position: absolute;
+}
+
+.text-bg-wrapper {
+  opacity: 0.1;
+}
+
+.text-bg {
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0.0;
+}
+
+.text-bg.active {
+  animation: flicker-in-02 1.0s forwards;
+}
+
+.shadow-text {
+  pointer-events: none;
+  padding: 5px;
+  opacity: 0.0;
+}
+
+.text {
+  opacity: 0.0;
+}
+
+.text.active {
+  animation: fade-in 2.0s forwards;
+}
+
+.diamond-wrapper {
+  opacity: 1.0;
+}
+
+.big-diamond {
+  width: 300px;
+  height: 300px;
+  opacity: 0.0;
+}
+
+.big-diamond.active {
+  animation: flicker-in-02 1.5s forwards;
+}
+
+.path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 1000;
+  /*animation: dash 10s linear infinite;*/
+}
+
+.bonus-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-text {
+  font-size: 10px;
+  padding: 5px;
+  opacity: 0.0;
+  user-select: none;
+}
+
+.small-text.active {
+  animation: flicker-in-02 1.0s forwards;
+}
+
+.pulse-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pulse {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  opacity: 0.0;
+  border: 150px solid white;
+  animation: pulse 3s infinite;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes pulse {
+  0% {
+    width: 150px;
+    height: 150px;
+    opacity: 0.0;
+    border: 40px solid white;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  90% {
+    width: 500px;
+    height: 500px;
+    opacity: 0.0;
+    border: 2px solid white;
+  }
+
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0.0;
+    border: 2px solid white;
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flicker-in-01 {
+  0% {
+    opacity: 0.4;
+  }
+
+  10% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes flicker-in-02 {
+  0% {
+    opacity: 0.3;
+  }
+
+  10% {
+    opacity: 0.0;
+  }
+
+  15% {
+    opacity: 0.5;
+  }
+
+  20% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes blink-01 {
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 10;
+  }
+
+  50% {
+    opacity: 100;
+  }
+
+  95% {
+    opacity: 10;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/*soft steady blink*/
+@keyframes blink-02 {
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 100;
+  }
+
+  55% {
+    opacity: 100;
+  }
+
+  95% {
+    opacity: 0;
+  }
+}
+
+/*3D4043*/
+/*333639*/

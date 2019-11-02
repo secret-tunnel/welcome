@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import Token from './Token.js';
+import Lock from './Lock.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			mode: 'locked'
+		};
 
-export default App;
+		this.unlock = this.unlock.bind(this);
+	}
+
+	unlock() {
+		this.setState({
+			mode: 'unlocking'
+		});
+		setTimeout(() => {
+			this.setState({
+				mode: 'unlocked'
+			});
+		}, 10);
+	}
+
+	render() {
+		return <div className="bg">
+			{this.state.mode === 'unlocked' && <Token />}
+			{this.state.mode === 'locked' && <Lock unlock={this.unlock}/>}
+		</div>
+	}
+}
